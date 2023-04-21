@@ -1,0 +1,100 @@
+$gray300: #cbcbcb;
+$gray400: #afafaf;
+$gray500: #757575;
+$blue: #0068ff;
+$white: #fff;
+$red: #ff0009;
+
+@mixin labelFloating {
+  top: 8px;
+  left: 12px;
+  font-size: 12px;
+  line-height: 16px;
+  color: $gray400;
+}
+
+@mixin endItem {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  color: $gray400;
+}
+
+@mixin input {
+  width: 100%;
+  font-size: 14px;
+  line-height: 16px;
+  color: #1b2124;
+  border: 1px solid $gray300;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  outline: none;
+  padding: 24px 20px 8px 12px;
+
+  &:hover {
+    border-color: $gray400;
+  }
+
+  &:focus-within {
+    border-color: $blue;
+
+    & + label {
+      @include labelFloating;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    border-color: rgb($gray300, 30%);
+    background-color: $white;
+  }
+}
+
+.input {
+  position: relative;
+  transition: opacity 0.3s;
+
+  input {
+    @include input;
+  }
+}
+
+.label {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  font-size: 14px;
+  line-height: 16px;
+  color: $gray500;
+  transition: 0.3s;
+}
+
+.labelFloating {
+  @include labelFloating;
+}
+
+.errorText {
+  margin-top: 6px;
+  margin-left: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: $red;
+}
+
+.icon {
+  @include endItem;
+}
+
+.currency {
+  @include endItem;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.textarea {
+  @include input;
+
+  resize: none;
+}
